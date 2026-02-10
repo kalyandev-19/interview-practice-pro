@@ -14,7 +14,83 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      interview_questions: {
+        Row: {
+          answer_transcript: string | null
+          audio_url: string | null
+          clarity_score: number | null
+          created_at: string
+          id: string
+          improvement_tips: string | null
+          question_order: number
+          question_text: string
+          relevance_score: number | null
+          session_id: string
+        }
+        Insert: {
+          answer_transcript?: string | null
+          audio_url?: string | null
+          clarity_score?: number | null
+          created_at?: string
+          id?: string
+          improvement_tips?: string | null
+          question_order?: number
+          question_text: string
+          relevance_score?: number | null
+          session_id: string
+        }
+        Update: {
+          answer_transcript?: string | null
+          audio_url?: string | null
+          clarity_score?: number | null
+          created_at?: string
+          id?: string
+          improvement_tips?: string | null
+          question_order?: number
+          question_text?: string
+          relevance_score?: number | null
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interview_questions_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "interview_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      interview_sessions: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          difficulty: string
+          id: string
+          job_role: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          difficulty?: string
+          id?: string
+          job_role: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          difficulty?: string
+          id?: string
+          job_role?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
